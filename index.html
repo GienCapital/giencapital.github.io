@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AVΛTTARS — Global Masked Dance Collective</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="AVΛTTARS is a global masked dance collective created by dancers, for dancers. A hybrid vocal identity, masked shows, and crews in cities worldwide."
+  />
+  <style>
+    :root {
+      --bg: #000000;
+      --text: #f5f5f5;
+      --muted: #b3b3b3;
+      --accent: #ffffff;
+      --max-width: 900px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                   "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.96);
+      border-bottom: 1px solid #111;
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      font-size: 0.9rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo img {
+      height: 22px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      opacity: 0.6;
+      padding-bottom: 3px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      border-bottom-color: #fff;
+    }
+
+    /* LAYOUT */
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid #111;
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .hero-logo {
+      margin-bottom: 32px;
+    }
+
+    .hero-logo img {
+      max-width: 320px;
+      width: 70vw;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .hero-line {
+      font-size: 0.8rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 14px;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      max-width: 28rem;
+      margin: 0 auto 30px;
+      color: var(--muted);
+    }
+
+    .hero-scroll {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-top: 10px;
+    }
+
+    /* SECTIONS */
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.55;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .section-body {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+
+    .section-body p + p {
+      margin-top: 14px;
+    }
+
+    .list {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .list li {
+      margin-bottom: 8px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    .section-columns {
+      display: grid;
+      gap: 26px;
+    }
+
+    @media (min-width: 800px) {
+      .section-columns {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        align-items: flex-start;
+      }
+    }
+
+    .side-image {
+      text-align: center;
+    }
+
+    .side-image img {
+      max-width: 260px;
+      width: 70%;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .side-caption {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      opacity: 0.55;
+    }
+
+    /* CONTACT / FOOTER */
+    .contact-lines {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-lines p + p {
+      margin-top: 6px;
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 20px;
+      border-top: 1px solid #111;
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    footer span {
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <!-- main wordmark, white on transparent -->
+        <img src="assets/logo-avattars-white.png" alt="AVΛTTARS logo" />
+      </div>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#story">Story</a>
+        <a href="#dancers">Dancers</a>
+        <a href="#singers">Singers</a>
+        <a href="#influencers">Influencers</a>
+        <a href="#songwriters">Songwriters</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="hero">
+      <div class="hero-logo">
+        <img src="assets/logo-avattars-white.png" alt="AVΛTTARS" />
+      </div>
+      <div class="hero-line">Global masked dance collective</div>
+      <p class="hero-tagline">
+        A project created by dancers, for dancers. The vocalist isn’t the star — the dancers are.
+        Masked shows, hybrid vocals, and crews in cities all over the world.
+      </p>
+      <a href="#story" class="hero-scroll">Scroll ↓</a>
+    </section>
+
+    <!-- STORY -->
+    <section id="story">
+      <div class="section-label">Brand Story</div>
+      <h2 class="section-title">What is AVΛTTARS?</h2>
+      <div class="section-columns">
+        <div class="section-body">
+          <p>
+            AVΛTTARS is a dance-first music project. Instead of building everything around one
+            singer, we built a universe where the movement, the masks and the atmosphere come
+            first.
+          </p>
+          <p>
+            The AVΛTTARS voice is a stylized hybrid — created from our founder’s voice blended
+            with AI vocal design. It gives the project one consistent vocal identity without
+            putting a single person in the spotlight.
+          </p>
+          <p>
+            This lets AVΛTTARS grow as crews in many cities at the same time, all performing the
+            same songs and shows in their own way. It’s not a traditional band. It’s a world you
+            can join.
+          </p>
+        </div>
+        <div class="side-image">
+          <!-- fishnet head illustration -->
+          <img src="assets/logo-head-fishnet.png" alt="AVΛTTARS mask icon" />
+          <div class="side-caption">MASKS · MOVEMENT · IDENTITY</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DANCERS -->
+    <section id="dancers">
+      <div class="section-label">For dancers</div>
+      <h2 class="section-title">Dancers</h2>
+      <div class="section-columns">
+        <div class="section-body">
+          <p>
+            AVΛTTARS was built for dancers. Latex queens, high-heels queens, popping queens, neon
+            wolves — the performers on stage and on screen are the real face of the project.
+          </p>
+          <p>To join as a dancer:</p>
+          <ul class="list">
+            <li>Choose any AVΛTTARS track.</li>
+            <li>Create a 10–15 second choreography in your style.</li>
+            <li>Record it wearing a mask — your face stays anonymous.</li>
+            <li>Post on TikTok or Instagram with <strong>#AVATTARS</strong> and tag @avattars.official.</li>
+            <li>Send us the link with your city using the application form.</li>
+          </ul>
+          <p>
+            We are focusing first on Berlin, London, Warsaw, Tokyo, Seoul, Manila, New York, São
+            Paulo and Paris — but any city can apply. As the music grows, so will the number of
+            AVΛTTARS crews.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SINGERS -->
+    <section id="singers">
+      <div class="section-label">For vocalists</div>
+      <h2 class="section-title">Singers</h2>
+      <div class="section-columns">
+        <div class="section-body">
+          <p>
+            The core AVΛTTARS vocal identity is a hybrid: part founder, part AI. It lets the
+            project stay anonymous, consistent and scalable.
+          </p>
+          <p>
+            At selected shows, we invite <strong>Guest Voices</strong> — singers and performers who
+            add live elements on top of the main vocal track: spoken lines, vocoder phrases, hype
+            shouts and chórki. Always masked.
+          </p>
+          <p>To be considered as a Guest Voice:</p>
+          <ul class="list">
+            <li>Send a short voice note (spoken or sung).</li>
+            <li>Tell us your city and social links.</li>
+            <li>Let us know what kind of energy you bring on stage.</li>
+          </ul>
+          <p>
+            You don’t need to carry full songs. The hybrid voice is the lead — you help bring the
+            show to life in the room.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFLUENCERS -->
+    <section id="influencers">
+      <div class="section-label">For creators</div>
+      <h2 class="section-title">Influencers</h2>
+      <div class="section-columns">
+        <div class="section-body">
+          <p>
+            Influencers and creators can join the AVΛTTARS universe by posting masked content —
+            lip syncs, transitions, dance snippets and edits to AVΛTTARS tracks.
+          </p>
+          <p>Here’s how to take part:</p>
+          <ul class="list">
+            <li>Post a video using any AVΛTTARS song.</li>
+            <li>Wear a mask or partially cover your face.</li>
+            <li>Use hashtag <strong>#AVATTARS</strong> and tag @avattars.official.</li>
+            <li>Share your profiles with us through the creator form.</li>
+          </ul>
+          <p>
+            Active supporters may receive early access to new songs and challenges, VIP or early
+            entry to shows, masks or merch for content, and priority when we build local crews.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SONGWRITERS -->
+    <section id="songwriters">
+      <div class="section-label">For writers & producers</div>
+      <h2 class="section-title">Songwriters</h2>
+      <div class="section-columns">
+        <div class="section-body">
+          <p>
+            AVΛTTARS lives in a focused sound universe: dance pop, afro-influenced pop, house and
+            modern electronic music built for movement.
+          </p>
+          <p>
+            We’re open to working with songwriters and producers who want to contribute hooks,
+            toplines, lyrics or full demos that fit this world. Some tracks may be human-written,
+            some AI-assisted — the goal is always the same: music that makes people move.
+          </p>
+          <p>To send material:</p>
+          <ul class="list">
+            <li>Share private streaming links (no file attachments).</li>
+            <li>Include a short description of your role (lyrics, topline, production).</li>
+            <li>Mention if you prefer to be credited or stay anonymous.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-lines">
+        <p><strong>General:</strong> contact@avattars.com</p>
+        <p><strong>Dancers & creators:</strong> join@avattars.com</p>
+        <p><strong>Press & media:</strong> press@avattars.com</p>
+        <p><strong>Partnerships:</strong> partners@avattars.com</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>AVΛTTARS_</span>
+    <span>Global masked dance collective</span>
+  </footer>
+</body>
+</html>
