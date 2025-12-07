@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AVΛTTARS — Global Masked Dance Collective</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="AVΛTTARS is a global masked dance collective. A futuristic vocal identity, built from the founder’s voice and AI, created by dancers, for dancers."
+  />
+  <style>
+    :root {
+      --bg: #050509;
+      --bg-alt: #0b0b12;
+      --accent: #f72585;
+      --accent-soft: rgba(247, 37, 133, 0.16);
+      --accent-2: #4cc9f0;
+      --text: #f8f8ff;
+      --muted: #a0a0c0;
+      --border: #26263a;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.7);
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111125 0, #050509 45%, #020208 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 5, 12, 0.95),
+        rgba(5, 5, 12, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(76, 201, 240, 0.15);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 10%, #fff 0, #f72585 22%, #3a0ca3 55%, #030712 100%);
+      box-shadow: 0 0 30px rgba(247, 37, 133, 0.7);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 4px 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(247, 37, 133, 0.9);
+      background: radial-gradient(circle at 0 0, rgba(247, 37, 133, 0.25), transparent 55%);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-cta span {
+      font-size: 0.9rem;
+    }
+
+    .main {
+      flex: 1;
+    }
+
+    section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 16px;
+    }
+
+    @media (min-width: 900px) {
+      section {
+        padding: 60px 16px;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      gap: 24px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+        align-items: center;
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(76, 201, 240, 0.5);
+      background: radial-gradient(circle at 0 0, rgba(76, 201, 240, 0.2), transparent 60%);
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, #ffffff, #f72585, #4cc9f0);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .pill {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(160, 160, 192, 0.4);
+      color: var(--muted);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      padding: 10px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, rgba(247, 37, 133, 0.35), transparent 60%),
+        linear-gradient(90deg, #f72585, #7209b7);
+      box-shadow: 0 0 30px rgba(247, 37, 133, 0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(11, 11, 18, 0.9);
+      border-color: rgba(160, 160, 192, 0.4);
+      color: var(--muted);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(247, 37, 133, 0.7);
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta strong {
+      color: var(--accent-2);
+    }
+
+    /* Hero visual */
+    .hero-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(76, 201, 240, 0.28);
+      background: radial-gradient(circle at top, rgba(76, 201, 240, 0.28), transparent 58%),
+        linear-gradient(160deg, rgba(3, 7, 18, 0.9), rgba(10, 10, 26, 0.95));
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 20px;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(247, 37, 133, 0.25), transparent 55%),
+        radial-gradient(circle at 80% 90%, rgba(76, 201, 240, 0.2), transparent 60%);
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .hero-avatars {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .avatar {
+      flex: 1;
+      border-radius: 16px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, #f72585 24%, #3a0ca3 60%, #020617 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar:nth-child(2) {
+      background: radial-gradient(circle at 70% 0, #ffffff 0, #4cc9f0 22%, #4361ee 60%, #020617 100%);
+    }
+
+    .avatar:nth-child(3) {
+      background: radial-gradient(circle at 50% 0, #ffffff 0, #fbbf24 20%, #f72585 50%, #111827 100%);
+    }
+
+    .avatar-mask {
+      position: absolute;
+      inset: 15%;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.4);
+      background: radial-gradient(circle at 30% 15%, rgba(255, 255, 255, 0.6), transparent 55%),
+        radial-gradient(circle at 70% 80%, rgba(15, 23, 42, 0.9), #020617 80%);
+      mask-image: radial-gradient(circle at 50% 40%, transparent 0, transparent 35%, black 50%);
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #e5e7eb;
+    }
+
+    /* Generic sections */
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .section-intro {
+      font-size: 0.96rem;
+      color: var(--muted);
+      max-width: 36rem;
+      margin-bottom: 18px;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 800px) {
+      .card-grid.cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .card-grid.cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.8), rgba(3, 7, 18, 0.95));
+      padding: 16px 16px 18px;
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+      margin-bottom: 6px;
+    }
+
+    .badge-pink {
+      border-color: rgba(247, 37, 133, 0.8);
+      background: var(--accent-soft);
+    }
+
+    .badge-cyan {
+      border-color: rgba(76, 201, 240, 0.8);
+      background: rgba(76, 201, 240, 0.08);
+    }
+
+    .list {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .list li {
+      margin-bottom: 6px;
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .list li::before {
+      content: "⟡";
+      font-size: 0.7rem;
+      color: var(--accent-2);
+      margin-top: 3px;
+    }
+
+    .cities-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .city-pill {
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .city-pill span {
+      opacity: 0.7;
+      font-size: 0.75rem;
+    }
+
+    .cta-inline {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .cta-inline a {
+      color: var(--accent-2);
+    }
+
+    /* Contact / footer */
+    .contact-card {
+      max-width: 38rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(76, 201, 240, 0.4);
+      background: radial-gradient(circle at top, rgba(76, 201, 240, 0.25), transparent 65%),
+        linear-gradient(160deg, #020617, #020617);
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 14px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-grid strong {
+      color: var(--text);
+    }
+
+    footer {
+      border-top: 1px solid rgba(24, 24, 40, 0.9);
+      padding: 14px 16px 24px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="logo-mark"></div>
+          <div>AVΛTTARS_</div>
+        </div>
+        <nav class="nav-links">
+          <a href="#story">Story</a>
+          <a href="#different">Why Different</a>
+          <a href="#crew">Join Crew</a>
+          <a href="#siren">Become a Siren</a>
+          <a href="#voice">Guest Voice</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a href="#crew" class="nav-cta">
+          <span>Join the Collective</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <div>
+          <div class="hero-badge">
+            <span>Global masked dance collective</span>
+          </div>
+          <h1 class="hero-title">
+            A new way to<br />
+            <span>experience music.</span>
+          </h1>
+          <p class="hero-tagline">
+            AVΛTTARS is a dance-first project where the vocalist isn’t the star — the dancers are.
+            Masked crews, hybrid vocals, and futuristic shows in cities around the world.
+          </p>
+
+          <div class="hero-pills">
+            <div class="pill">Dancers first</div>
+            <div class="pill">Masked performances</div>
+            <div class="pill">Global crews</div>
+          </div>
+
+          <div class="hero-cta-row">
+            <a href="#crew" class="btn-primary">
+              Join a dance crew
+              <span>✹</span>
+            </a>
+            <a href="#siren" class="btn-ghost">
+              Become a Siren
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <strong>Berlin · London · Warsaw · Tokyo · New York</strong><br />
+            More AVΛTTARS city crews are coming soon.
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-hidden="true">
+          <div class="hero-tag">Featured roles</div>
+          <div class="hero-card-title">Latex Queen · High Heels Queen · Popping Queen</div>
+
+          <div class="hero-avatars">
+            <div class="avatar">
+              <div class="avatar-mask"></div>
+            </div>
+            <div class="avatar">
+              <div class="avatar-mask"></div>
+            </div>
+            <div class="avatar">
+              <div class="avatar-mask"></div>
+            </div>
+          </div>
+
+          <div class="hero-card-footer">
+            <div class="hero-chip-row">
+              <div class="chip">Dance pop</div>
+              <div class="chip">Afro · House</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:0.78rem; color:var(--muted);">
+                Voice: hybrid of founder + AI<br />
+                Shows: live dance, masked, high energy
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- BRAND STORY -->
+      <section id="story">
+        <div class="section-label">Brand Story</div>
+        <h2 class="section-title">What is AVΛTTARS?</h2>
+        <p class="section-intro">
+          AVΛTTARS was created by dancers, for dancers. It’s a global masked dance collective where
+          movement, anonymity and atmosphere matter more than ego or celebrity.
+        </p>
+
+        <div class="card-grid cols-2">
+          <div class="card">
+            <span class="badge badge-pink">Dance comes first</span>
+            <h3>The show, not the singer</h3>
+            <p>
+              In a normal band, the vocalist is the star and everyone else supports them. AVΛTTARS
+              flips this model: here, the voice is part of the world — but the dancers are the
+              ones in the spotlight.
+            </p>
+            <p>
+              Our songs are written for choreography, TikTok hooks and live performances. Every
+              track is built so dancers can move, cut, loop and reinvent it.
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="badge badge-cyan">A hybrid vocal identity</span>
+            <h3>The AVΛTTARS voice</h3>
+            <p>
+              To keep the focus off one “star singer”, the AVΛTTARS voice is a stylized hybrid
+              created from our founder’s voice blended with AI vocal design. It’s one consistent
+              identity, but it doesn’t belong to any single person.
+            </p>
+            <p>
+              This lets crews perform in many cities at the same time, to the same songs, without
+              needing a touring vocalist.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY DIFFERENT -->
+      <section id="different">
+        <div class="section-label">Why we’re different</div>
+        <h2 class="section-title">Not a normal band</h2>
+        <p class="section-intro">
+          AVΛTTARS isn’t a traditional artist project. It’s a scalable performance universe built
+          around dance, masks and global crews.
+        </p>
+
+        <div class="card-grid cols-3">
+          <div class="card">
+            <h3>Dancers are the stars</h3>
+            <p>
+              No frontperson. No solo singer. No single “face” of the project. The stars are the
+              masked dancers — Latex Queens, High Heels Queens, Popping Queens and Neon Wolves —
+              bringing the music to life on stage and on screen.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Global, not local</h3>
+            <p>
+              AVΛTTARS is designed for multiple city crews. Berlin, London, Warsaw, Tokyo, New
+              York and more — all performing AVΛTTARS shows, sometimes on the same night, with
+              their own local dancers and the same signature sound.
+            </p>
+          </div>
+          <div class="card">
+            <h3>The show is everything</h3>
+            <p>
+              The music matters — but the live shows are the heart of it. Masked choreography,
+              neon lighting, chórki from dancers, spoken lines, vocoder moments and high-energy
+              formations turn every concert into a cinematic dance ritual.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- JOIN CREW -->
+      <section id="crew">
+        <div class="section-label">Join</div>
+        <h2 class="section-title">Join our dance crew</h2>
+        <p class="section-intro">
+          Want to perform as an official AVΛTTARS dancer in your city? This is how you enter the
+          universe.
+        </p>
+
+        <div class="card-grid cols-2">
+          <div class="card">
+            <span class="badge badge-pink">How it works</span>
+            <h3>Steps to apply</h3>
+            <ul class="list">
+              <li>Choose any AVΛTTARS track that moves you.</li>
+              <li>Create a 10–15 second choreography in your style.</li>
+              <li>Record it wearing a mask — your face must stay anonymous.</li>
+              <li>Post on TikTok or Instagram with <strong>#AVATTARS</strong> and @avattars.official.</li>
+              <li>Send us the link via the “Join Crew” form, choosing your city.</li>
+            </ul>
+            <p class="cta-inline">
+              First wave of recruitment will focus on <strong>Berlin, London, Warsaw, Tokyo, New York and Manila</strong>,
+              with more cities opening soon.
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="badge badge-cyan">City crews</span>
+            <h3>Current & planned cities</h3>
+            <p>We are building AVΛTTARS crews in key cities around the world.</p>
+            <div class="cities-grid">
+              <div class="city-pill">Berlin <span>· DE</span></div>
+              <div class="city-pill">London <span>· UK</span></div>
+              <div class="city-pill">Warsaw <span>· PL</span></div>
+              <div class="city-pill">Tokyo <span>· JP</span></div>
+              <div class="city-pill">Seoul <span>· KR</span></div>
+              <div class="city-pill">Manila <span>· PH</span></div>
+              <div class="city-pill">New York <span>· US</span></div>
+              <div class="city-pill">São Paulo <span>· BR</span></div>
+              <div class="city-pill">Paris <span>· FR</span></div>
+              <div class="city-pill">More soon…</div>
+            </div>
+            <p class="cta-inline">
+              If your city isn’t listed yet, you can still send us your video — it helps us decide
+              where to open the next crew.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SIRENS -->
+      <section id="siren">
+        <div class="section-label">Creators</div>
+        <h2 class="section-title">Become an AVΛTTARS Siren</h2>
+        <p class="section-intro">
+          Sirens are influencers and creators who help grow the universe using lip syncs, masked
+          edits, transitions and dance snippets to AVΛTTARS tracks.
+        </p>
+
+        <div class="card-grid cols-2">
+          <div class="card">
+            <span class="badge badge-pink">For influencers & creators</span>
+            <h3>How to become a Siren</h3>
+            <ul class="list">
+              <li>Post a lip sync, transition or dance video to any AVΛTTARS song.</li>
+              <li>Wear a mask or partially obscure your face — anonymity is part of the world.</li>
+              <li>Use hashtag <strong>#AVATTARSSIREN</strong> and tag @avattars.official.</li>
+              <li>Apply through the “Siren Program” form with your profile links.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="badge badge-cyan">Perks</span>
+            <h3>What Sirens receive</h3>
+            <ul class="list">
+              <li>Priority access to new songs and challenges.</li>
+              <li>Invitations to AVΛTTARS shows with VIP or early entry.</li>
+              <li>Custom masks or merch for content creation.</li>
+              <li>Chance to be featured on the official channels.</li>
+              <li>Priority consideration for joining a city dance crew.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- GUEST VOICE -->
+      <section id="voice">
+        <div class="section-label">Stage roles</div>
+        <h2 class="section-title">Become a guest voice at concerts</h2>
+        <p class="section-intro">
+          At selected shows, we invite Guest Voices — creators, singers and performers — to add
+          live spoken lines, chórki and vocoder moments on stage, always masked.
+        </p>
+
+        <div class="card-grid cols-2">
+          <div class="card">
+            <span class="badge badge-pink">On stage</span>
+            <h3>Your role as Guest Voice</h3>
+            <ul class="list">
+              <li>Speak iconic AVΛTTARS lines into vocoder or FX mics.</li>
+              <li>Add short chórki and hype shouts on top of the main track.</li>
+              <li>Lead call-and-response moments with the crowd.</li>
+              <li>Stay masked — identity is part of the universe.</li>
+            </ul>
+            <p class="cta-inline">
+              You don’t have to carry full songs. The main vocal is our hybrid voice — you add live
+              energy on top.
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="badge badge-cyan">How to apply
